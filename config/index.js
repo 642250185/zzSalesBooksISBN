@@ -8,6 +8,7 @@ const config = {
         homePage: '/homePage?fromChannel=ppzq',
         bookListByCate: '/bookListByCate',
         categoryPath : path.join(__dirname, '..', 'data/category.json'),
+        bookPath: path.join(__dirname, '..', 'data/books.json'),
         exportPath: path.join(__dirname, '..', 'download'),
     },
     /**

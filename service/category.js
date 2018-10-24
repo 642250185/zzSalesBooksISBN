@@ -50,5 +50,5 @@ const crawlCategory = async () =>{
     }
 };
 
-crawlCategory()
+
 exports.crawlCategory = crawlCategory;

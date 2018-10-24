@@ -1,3 +1,4 @@
+const _path = require('path');
 const fs = require('fs-extra');
 const request = require('superagent');
 const config = require('../config/index');
@@ -6,7 +7,7 @@ const sleep = require('js-sleep/js-sleep');
 const {crawlCategory} = require('./category');
 const {formatDate} = require('../util/dateUtil');
 
-const {PPU, domain, zzopenRoute, categoryPath, bookListByCate, exportPath} = config.zz;
+const {PPU, domain, zzopenRoute, categoryPath, bookListByCate, bookPath} = config.zz;
 
 let cookie;
 const formatCookie = () => {
@@ -29,6 +30,10 @@ const getBooksInfoByCategoryId = async (category, pageNum, blist) =>{
         const {list, total} = bookList;
         for(let book of list){
             blist.push({
+                groupId         : category.groupId,
+                groupName       : category.groupName,
+                categoryId      : category.categoryId,
+                categoryName    : category.categoryName,
                 infoId          : book.infoId,
                 cover           : book.cover,
                 title           : book.title,
@@ -77,42 +82,18 @@ const getAllCategoryBooks = async () =>{
 };
 
 
-const exportExcel = async () =>{
+const savebooks = async () =>{
     try {
         const final = await getAllCategoryBooks();
         console.info(`所有的书籍总量: ${final.length}`);
-        const result = [['bookId','封面','书名','作者','豆瓣评分','原价(单位/分)','二手价(单位/分)', '转换价格(单位/元)', '折扣','Metric','Stock','StrInfoId']];
-        for(let book of final){
-            let row = [];
-            row.push(book.infoId);
-            row.push(book.cover);
-            row.push(book.title);
-            row.push(book.authors);
-            row.push(book.doubanRate);
-            row.push(book.price);
-            row.push(book.sellPrice);
-            row.push(book.conversionPrice);
-            row.push(book.sellDiscount);
-            row.push(book.metric);
-            row.push(book.stock);
-            row.push(book.strInfoId);
-            result.push(row);
-        }
-        const currentTime = formatDate(new Date(), 'YYYY-MM-DD-HH');
-        const filename = `${exportPath}/转转销售数据-${currentTime}.xlsx`;
-        fs.writeFileSync(filename, xlsx.build([
-            {name: '转转销售书籍', data: result},
-        ]));
-        console.log(`爬取结束, 成功导出文件: ${filename}`);
+        await fs.ensureDir(_path.join(bookPath, '..'));
+        fs.writeFileSync(bookPath, JSON.stringify(final, null, 4));
+        return final;
     } catch (e) {
         console.error(e);
         return e;
     }
 };
 
-const test = async () =>{
-    await exportExcel();
-};
-
-
-test();
+savebooks();
+exports.savebooks = savebooks;

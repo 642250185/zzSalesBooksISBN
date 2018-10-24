@@ -1,1 +1,368 @@
-[]
+[
+    {
+        "groupId": 2113013,
+        "groupName": "文学小说",
+        "categoryId": 2113013005,
+        "categoryName": "近代小说"
+    },
+    {
+        "groupId": 2113013,
+        "groupName": "文学小说",
+        "categoryId": 2113013012,
+        "categoryName": "外国文学"
+    },
+    {
+        "groupId": 2113013,
+        "groupName": "文学小说",
+        "categoryId": 2113013001,
+        "categoryName": "传记"
+    },
+    {
+        "groupId": 2113013,
+        "groupName": "文学小说",
+        "categoryId": 2113013011,
+        "categoryName": "推理悬疑"
+    },
+    {
+        "groupId": 2113013,
+        "groupName": "文学小说",
+        "categoryId": 2113013003,
+        "categoryName": "古典名著"
+    },
+    {
+        "groupId": 2113013,
+        "groupName": "文学小说",
+        "categoryId": 2113013017,
+        "categoryName": "中外诗歌"
+    },
+    {
+        "groupId": 2113013,
+        "groupName": "文学小说",
+        "categoryId": 2113013010,
+        "categoryName": "青春文学"
+    },
+    {
+        "groupId": 2113013,
+        "groupName": "文学小说",
+        "categoryId": 2113013002,
+        "categoryName": "动漫"
+    },
+    {
+        "groupId": 2113013,
+        "groupName": "文学小说",
+        "categoryId": 2113013008,
+        "categoryName": "名家随笔"
+    },
+    {
+        "groupId": 2113013,
+        "groupName": "文学小说",
+        "categoryId": 2113013013,
+        "categoryName": "文化"
+    },
+    {
+        "groupId": 2113013,
+        "groupName": "文学小说",
+        "categoryId": 2113013014,
+        "categoryName": "武侠"
+    },
+    {
+        "groupId": 2113013,
+        "groupName": "文学小说",
+        "categoryId": 2113013015,
+        "categoryName": "玄幻"
+    },
+    {
+        "groupId": 2113013,
+        "groupName": "文学小说",
+        "categoryId": 2113013016,
+        "categoryName": "言情"
+    },
+    {
+        "groupId": 2113013,
+        "groupName": "文学小说",
+        "categoryId": 2113013006,
+        "categoryName": "军事"
+    },
+    {
+        "groupId": 2113013,
+        "groupName": "文学小说",
+        "categoryId": 2113013007,
+        "categoryName": "科幻"
+    },
+    {
+        "groupId": 2113013,
+        "groupName": "文学小说",
+        "categoryId": 2113013004,
+        "categoryName": "古籍"
+    },
+    {
+        "groupId": 2113013,
+        "groupName": "文学小说",
+        "categoryId": 2113013009,
+        "categoryName": "其他文学"
+    },
+    {
+        "groupId": 2113017,
+        "groupName": "经管励志",
+        "categoryId": 2113017001,
+        "categoryName": "成功励志"
+    },
+    {
+        "groupId": 2113017,
+        "groupName": "经管励志",
+        "categoryId": 2113017002,
+        "categoryName": "管理"
+    },
+    {
+        "groupId": 2113017,
+        "groupName": "经管励志",
+        "categoryId": 2113017003,
+        "categoryName": "经济"
+    },
+    {
+        "groupId": 2113017,
+        "groupName": "经管励志",
+        "categoryId": 2113017004,
+        "categoryName": "投资理财"
+    },
+    {
+        "groupId": 2113014,
+        "groupName": "童书教育",
+        "categoryId": 2113014001,
+        "categoryName": "儿童文学"
+    },
+    {
+        "groupId": 2113014,
+        "groupName": "童书教育",
+        "categoryId": 2113014002,
+        "categoryName": "绘本"
+    },
+    {
+        "groupId": 2113014,
+        "groupName": "童书教育",
+        "categoryId": 2113014006,
+        "categoryName": "科普百科"
+    },
+    {
+        "groupId": 2113014,
+        "groupName": "童书教育",
+        "categoryId": 2113014007,
+        "categoryName": "动漫卡通"
+    },
+    {
+        "groupId": 2113014,
+        "groupName": "童书教育",
+        "categoryId": 2113014009,
+        "categoryName": "益智游戏"
+    },
+    {
+        "groupId": 2113014,
+        "groupName": "童书教育",
+        "categoryId": 2113014008,
+        "categoryName": "幼儿启蒙"
+    },
+    {
+        "groupId": 2113014,
+        "groupName": "童书教育",
+        "categoryId": 2113014011,
+        "categoryName": "婴儿读物"
+    },
+    {
+        "groupId": 2113014,
+        "groupName": "童书教育",
+        "categoryId": 2113014010,
+        "categoryName": "励志成长"
+    },
+    {
+        "groupId": 2113014,
+        "groupName": "童书教育",
+        "categoryId": 2113014004,
+        "categoryName": "育儿早教"
+    },
+    {
+        "groupId": 2113014,
+        "groupName": "童书教育",
+        "categoryId": 2113014003,
+        "categoryName": "亲子教育"
+    },
+    {
+        "groupId": 2113014,
+        "groupName": "童书教育",
+        "categoryId": 2113014005,
+        "categoryName": "孕产胎教"
+    },
+    {
+        "groupId": 2113015,
+        "groupName": "人文社科",
+        "categoryId": 2113015005,
+        "categoryName": "心理学"
+    },
+    {
+        "groupId": 2113015,
+        "groupName": "人文社科",
+        "categoryId": 2113015001,
+        "categoryName": "法律"
+    },
+    {
+        "groupId": 2113015,
+        "groupName": "人文社科",
+        "categoryId": 2113015002,
+        "categoryName": "历史"
+    },
+    {
+        "groupId": 2113015,
+        "groupName": "人文社科",
+        "categoryId": 2113015006,
+        "categoryName": "哲学"
+    },
+    {
+        "groupId": 2113015,
+        "groupName": "人文社科",
+        "categoryId": 2113015007,
+        "categoryName": "政治"
+    },
+    {
+        "groupId": 2113015,
+        "groupName": "人文社科",
+        "categoryId": 2113015003,
+        "categoryName": "军事"
+    },
+    {
+        "groupId": 2113015,
+        "groupName": "人文社科",
+        "categoryId": 2113015004,
+        "categoryName": "社会科学"
+    },
+    {
+        "groupId": 2113015,
+        "groupName": "人文社科",
+        "categoryId": 2113015008,
+        "categoryName": "宗教"
+    },
+    {
+        "groupId": 2113018,
+        "groupName": "科技科普",
+        "categoryId": 2113018002,
+        "categoryName": "计算机"
+    },
+    {
+        "groupId": 2113018,
+        "groupName": "科技科普",
+        "categoryId": 2113018003,
+        "categoryName": "建筑"
+    },
+    {
+        "groupId": 2113018,
+        "groupName": "科技科普",
+        "categoryId": 2113018004,
+        "categoryName": "科普读物"
+    },
+    {
+        "groupId": 2113018,
+        "groupName": "科技科普",
+        "categoryId": 2113018007,
+        "categoryName": "自然科学"
+    },
+    {
+        "groupId": 2113019,
+        "groupName": "生活艺术",
+        "categoryId": 2113019011,
+        "categoryName": "艺术"
+    },
+    {
+        "groupId": 2113019,
+        "groupName": "生活艺术",
+        "categoryId": 2113019010,
+        "categoryName": "摄影"
+    },
+    {
+        "groupId": 2113019,
+        "groupName": "生活艺术",
+        "categoryId": 2113019002,
+        "categoryName": "家居装修"
+    },
+    {
+        "groupId": 2113019,
+        "groupName": "生活艺术",
+        "categoryId": 2113019004,
+        "categoryName": "旅游指南"
+    },
+    {
+        "groupId": 2113019,
+        "groupName": "生活艺术",
+        "categoryId": 2113019005,
+        "categoryName": "美食烹饪 "
+    },
+    {
+        "groupId": 2113019,
+        "groupName": "生活艺术",
+        "categoryId": 2113019003,
+        "categoryName": "两性关系"
+    },
+    {
+        "groupId": 2113019,
+        "groupName": "生活艺术",
+        "categoryId": 2113019008,
+        "categoryName": "休闲爱好 "
+    },
+    {
+        "groupId": 2113019,
+        "groupName": "生活艺术",
+        "categoryId": 2113019009,
+        "categoryName": "养生保健"
+    },
+    {
+        "groupId": 2113019,
+        "groupName": "生活艺术",
+        "categoryId": 2113019001,
+        "categoryName": "风水占卜"
+    },
+    {
+        "groupId": 2113019,
+        "groupName": "生活艺术",
+        "categoryId": 2113019006,
+        "categoryName": "美妆时尚"
+    },
+    {
+        "groupId": 2113019,
+        "groupName": "生活艺术",
+        "categoryId": 2113019007,
+        "categoryName": "手工DIY"
+    },
+    {
+        "groupId": 2113019,
+        "groupName": "生活艺术",
+        "categoryId": 2113019012,
+        "categoryName": "运动"
+    },
+    {
+        "groupId": 2113016,
+        "groupName": "教材教辅",
+        "categoryId": 2113016005,
+        "categoryName": "教辅"
+    },
+    {
+        "groupId": 2113016,
+        "groupName": "教材教辅",
+        "categoryId": 2113016002,
+        "categoryName": "教材"
+    },
+    {
+        "groupId": 2113016,
+        "groupName": "教材教辅",
+        "categoryId": 2113016003,
+        "categoryName": "考试"
+    },
+    {
+        "groupId": 2113016,
+        "groupName": "教材教辅",
+        "categoryId": 2113016004,
+        "categoryName": "外语"
+    },
+    {
+        "groupId": 2113016,
+        "groupName": "教材教辅",
+        "categoryId": 2113016001,
+        "categoryName": "工具书"
+    }
+]
