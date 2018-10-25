@@ -4,90 +4,44 @@ const request = require('superagent');
 const config = require('../config/index');
 const xlsx = require('node-xlsx').default;
 const sleep = require('js-sleep/js-sleep');
-const {crawlCategory} = require('./category');
-const {formatDate} = require('../util/dateUtil');
 
-const {PPU, domain, zzopenRoute, categoryPath, bookListByCate, bookPath} = config.zz;
+const {PPU, domain, zzopenRoute, bookDetail, bookPath, bookDetailExtra, resultPath, exportPath} = config.zz;
 
 let cookie;
 const formatCookie = () => {
     cookie = `PPU="${PPU}"`;
-    console.info('cookie: ', cookie);
 };
 
-const getBooksInfoByCategoryId = async (category, pageNum, blist) =>{
+const getBookISBN = async(infoId) => {
     try {
-        const pageSize = 20;
-        if(!blist){
-            blist = [];
-            pageNum = 1;
-        }
-        let path = `${domain}${zzopenRoute}${bookListByCate}?cateId2=${category.groupId}&cateId3=${category.categoryId}&sortBy=0&pageSize=${pageSize}&pageNum=${pageNum}`;
+        const _path = `${domain}${zzopenRoute}${bookDetailExtra}?infoId=${infoId}`;
+        let _result = await request.get(_path).set('Cookie', cookie);
+        _result = JSON.parse(_result.text);
+        const {isbn13} = _result.respData;
+        return isbn13;
+    } catch (e) {
+        console.error(e);
+        return e;
+    }
+};
+
+const getBookInfo = async(item) => {
+    try {
+        const final = [];
+        const path = `${domain}${zzopenRoute}${bookDetail}?bookId=${item.bookId}&infoId=${item.infoId}&metric=${item.metric}`;
         let result = await request.get(path).set('Cookie', cookie);
         result = JSON.parse(result.text);
-        const {respCode, respData, errorMsg} = result;
-        const {bookList} = respData;
-        const {list, total} = bookList;
-        for(let book of list){
-            blist.push({
-                groupId         : category.groupId,
-                groupName       : category.groupName,
-                categoryId      : category.categoryId,
-                categoryName    : category.categoryName,
-                infoId          : book.infoId,
-                cover           : book.cover,
-                title           : book.title,
-                authors         : book.authors.join("、"),
-                doubanRate      : book.doubanRate,
-                price           : book.price,
-                sellPrice       : book.sellPrice,
-                conversionPrice : (book.price / 100).toFixed(2),
-                sellDiscount    : book.sellDiscount,
-                metric          : book.metric,
-                stock           : book.stock,
-                strInfoId       : book.strInfoId
-            });
-        }
-        console.info(`第[${pageNum}]页、blistSize: ${blist.length}`);
-        if(total === 20){
-            pageNum++;
-            return await getBooksInfoByCategoryId(category, pageNum, blist);
-        } else {
-            return blist;
-        }
-    } catch (e) {
-        console.error(e);
-        return [];
-    }
-};
+        const {respCode, respData} = result;
+        const {bookId, title, pubdate, publisher} = respData;
 
-
-const getAllCategoryBooks = async () =>{
-    try {
-        await formatCookie();
-        const categorys = JSON.parse(fs.readFileSync(categoryPath));
-        console.info('书籍分类总数: %d ', categorys.length);
-        let count = 0, resultList = [];
-        for(let category of categorys){
-            ++count;
-            console.info('count: %d, goupId: %d, groupName: %j, categoryId: %d, categoryName: %j', count, category.groupId, category.groupName, category.categoryId, category.categoryName);
-            const blist = await getBooksInfoByCategoryId(category);
-            resultList = resultList.concat(blist);
-        }
-        return resultList;
-    } catch (e) {
-        console.error(e);
-        return [];
-    }
-};
-
-
-const savebooks = async () =>{
-    try {
-        const final = await getAllCategoryBooks();
-        console.info(`所有的书籍总量: ${final.length}`);
-        await fs.ensureDir(_path.join(bookPath, '..'));
-        fs.writeFileSync(bookPath, JSON.stringify(final, null, 4));
+        const isbn = await getBookISBN(item.infoId);
+        console.info(`${isbn} ${bookId} ${item.groupName} ${item.categoryName} ${title} ${pubdate} ${publisher} `);
+        final.push({
+            isbn, bookId,
+            groupName: item.groupName,
+            categoryName: item.categoryName,
+            title, pubdate, publisher
+        });
         return final;
     } catch (e) {
         console.error(e);
@@ -95,5 +49,65 @@ const savebooks = async () =>{
     }
 };
 
-savebooks();
-exports.savebooks = savebooks;
+const saveBooks = async(resultList) => {
+    try {
+        await fs.ensureDir(_path.join(resultPath, '..'));
+        fs.writeFileSync(resultPath, JSON.stringify(resultList, null, 4));
+    } catch (e) {
+        console.error(e);
+        return e;
+    }
+};
+
+const exportExcel = async(resultList) => {
+    try {
+        const table = [['ISBN','bookId', '一级分类', '二级分类', '书名', '出版时间', '出版社']];
+        for(let book of resultList){
+            const row = [];
+            row.push(book.isbn);
+            row.push(book.bookId);
+            row.push(book.groupName);
+            row.push(book.categoryName);
+            row.push(book.title);
+            row.push(book.pubdate);
+            row.push(book.publisher);
+            table.push(row);
+        }
+        const random = Math.ceil(Math.random() * 100);
+        const filename = `${exportPath}/转转ISBN分类-${random}.xlsx`;
+        fs.writeFileSync(filename, xlsx.build([
+            {name: '转转分类', data: table},
+        ]));
+        console.log(`成功导出文件: ${filename}`);
+    } catch (e) {
+        console.error(e);
+        return e;
+    }
+};
+
+const getAllBookInfo = async() => {
+    try {
+        let resultList = [];
+        await formatCookie();
+        const params = JSON.parse(fs.readFileSync(bookPath));
+        console.info('书籍参数总数: %d ', params.length);
+        for(let item of params){
+            const list = await getBookInfo(item);
+            resultList = resultList.concat(list);
+            // break;
+        }
+        console.info(`size: ${resultList.length}`);
+
+        await saveBooks(resultList);
+
+        await exportExcel(resultList);
+
+        return resultList;
+    } catch (e) {
+        console.error(e);
+        return e;
+    }
+};
+
+
+exports.getAllBookInfo = getAllBookInfo;

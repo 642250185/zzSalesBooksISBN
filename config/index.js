@@ -7,8 +7,13 @@ const config = {
         zzopenRoute: '/zzopen/sellbook',
         homePage: '/homePage?fromChannel=ppzq',
         bookListByCate: '/bookListByCate',
+
+        bookDetail: '/bookDetail',
+        bookDetailExtra: '/bookDetailExtra',
+
         categoryPath : path.join(__dirname, '..', 'data/category.json'),
         bookPath: path.join(__dirname, '..', 'data/books.json'),
+        resultPath: path.join(__dirname, '..', 'data/result.json'),
         exportPath: path.join(__dirname, '..', 'download'),
     },
     /**
